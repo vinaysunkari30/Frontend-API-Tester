@@ -1,0 +1,29 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.env
+
+SUPABASE_URL = 'https://qzmhvwaocwljlxkjaipn.supabase.co'
+SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6bWh2d2FvY3dsamx4a2phaXBuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM2NDIwNTUsImV4cCI6MjA3OTIxODA1NX0.EW5vlL_6OROLkh6LTNY2fURcClmdpitQUV7fIANqOe4'
