@@ -4,7 +4,7 @@ import { supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
 import Collections from "../Collections";
 import History from "../History";
-import ReactJson from "react-json-view";
+import ReactJson from "@uiw/react-json-view";
 import { BiSolidFolderOpen } from "react-icons/bi";
 import { MdHistory } from "react-icons/md";
 import { TailSpin } from "react-loader-spinner";
@@ -68,7 +68,7 @@ const Home = () => {
         },
       };
       const response = await fetch(
-        "http://localhost:3000/collections",
+        "https://backend-api-tester-t8sp.onrender.com/collections",
         options
       );
       const json = await response.json();
@@ -143,7 +143,7 @@ const Home = () => {
         body: JSON.stringify(collection),
       };
       const response = await fetch(
-        "http://localhost:3000/collections",
+        "https://backend-api-tester-t8sp.onrender.com/collections",
         options
       );
       const json = await response.json();
@@ -185,7 +185,7 @@ const Home = () => {
         },
       };
       const response = await fetch(
-        `http://localhost:3000/collections/${id}`,
+        `https://backend-api-tester-t8sp.onrender.com/collections/${id}`,
         options
       );
       const json = await response.json();
@@ -245,7 +245,7 @@ const Home = () => {
       },
     };
     const serverResponse = await fetch(
-      `http://localhost:3000/request/${id}`,
+      `https://backend-api-tester-t8sp.onrender.com/request/${id}`,
       options
     );
     const jsonResponse = await serverResponse.json();
@@ -342,7 +342,7 @@ const Home = () => {
         },
         body: JSON.stringify(apiData),
       };
-      const response = await fetch("http://localhost:3000/proxy", options);
+      const response = await fetch("https://backend-api-tester-t8sp.onrender.com/proxy", options);
       const json = await response.json();
       const data = json.saveResponse.data[0];
       const formattedObj = {
@@ -380,7 +380,7 @@ const Home = () => {
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = await fetch("http://localhost:3000/history", options);
+      const response = await fetch("https://backend-api-tester-t8sp.onrender.com/history", options);
       const json = await response.json();
       const formattedList = json.data.map((each) => {
         return {
@@ -437,7 +437,7 @@ const Home = () => {
         },
       };
       const serverResponse = await fetch(
-        `http://localhost:3000/history/${id}`,
+        `https://backend-api-tester-t8sp.onrender.com/history/${id}`,
         options
       );
 
@@ -488,7 +488,7 @@ const Home = () => {
         },
       };
       const response = await fetch(
-        `http://localhost:3000/history/requests/${id}`,
+        `https://backend-api-tester-t8sp.onrender.com/history/requests/${id}`,
         options
       );
       const json = await response.json();

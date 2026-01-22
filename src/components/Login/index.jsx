@@ -47,7 +47,7 @@ const Login = () => {
         },
         body: JSON.stringify(userData),
       };
-      const response = await fetch("http://localhost:3000/login", options);
+      const response = await fetch("https://backend-api-tester-t8sp.onrender.com/login", options);
       const json = await response.json();
       setIsLoading(false);
       if (response.ok) {

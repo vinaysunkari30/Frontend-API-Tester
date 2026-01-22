@@ -6,7 +6,6 @@ import { BsThreeDots } from "react-icons/bs";
 import { supabase } from "../supabase";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { TailSpin } from "react-loader-spinner";
-import { v4 as uuid } from "uuid";
 import { toast } from "react-toastify";
 
 const Collections = (props) => {
@@ -54,11 +53,10 @@ const Collections = (props) => {
       },
     };
     const response = await fetch(
-      `http://localhost:3000/requests/${id}`,
+      `https://backend-api-tester-t8sp.onrender.com/requests/${id}`,
       options
     );
     const json = await response.json();
-    console.log(json);
     if (json.data.length > 0) {
       setRequestItem(true);
       setShowItems(true);
@@ -120,7 +118,7 @@ const Collections = (props) => {
       },
       body: JSON.stringify(newReq),
     };
-    const response = await fetch("http://localhost:3000/requests", options);
+    const response = await fetch("https://backend-api-tester-t8sp.onrender.com/requests", options);
     const json = await response.json();
     const formattedObj = json.request.map((each) => {
       return {
@@ -165,7 +163,7 @@ const Collections = (props) => {
         },
       };
       const response = await fetch(
-        `http://localhost:3000/requests/${id}`,
+        `https://backend-api-tester-t8sp.onrender.com/requests/${id}`,
         options
       );
       if (response.ok) {

@@ -46,7 +46,7 @@ const Signup = () => {
         },
         body: JSON.stringify(newUser),
       };
-      const response = await fetch("http://localhost:3000/signup", options);
+      const response = await fetch("https://backend-api-tester-t8sp.onrender.com/signup", options);
       const json = await response.json();
       if (response.ok) {
         setIsLoading(false);
@@ -131,7 +131,7 @@ const Signup = () => {
       },
       body: JSON.stringify(newUser),
     };
-    const response = await fetch("http://localhost:3000/auth/google", options);
+    const response = await fetch("https://backend-api-tester-t8sp.onrender.com/auth/google", options);
     const json = await response.json();
     if (response.ok) {
       navigate("/");

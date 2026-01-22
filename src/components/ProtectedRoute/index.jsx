@@ -9,8 +9,6 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const getSession = async () => {
       const { data } = await supabase.auth.getSession();
-      // const { error } = await supabase.auth.refreshSession();
-      // if (error) await supabase.auth.signOut();
       setSession(data.session);
       setLoading(false);
     };

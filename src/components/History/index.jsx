@@ -30,12 +30,9 @@ const History = (props) => {
     isActive,
     getDeleteId,
     isDeleteCollectionLoading,
-    activeDelete,
-    deletedId,
   } = props;
   const { id, requestId, requestName, requestUrl, method } = historyObj;
   const [deleteId, setDeleteId] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
 
   const getMethodColor = (method) => {
     switch (method) {
