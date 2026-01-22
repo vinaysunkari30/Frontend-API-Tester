@@ -4,7 +4,8 @@ import { supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
 import Collections from "../Collections";
 import History from "../History";
-import ReactJson from "react-json-view";
+import JsonView from "@uiw/react-json-view";
+// import ReactJson from "react-json-view";
 import { BiSolidFolderOpen } from "react-icons/bi";
 import { MdHistory } from "react-icons/md";
 import { TailSpin } from "react-loader-spinner";
@@ -30,7 +31,7 @@ const Home = () => {
   const [isDeleteCollectionLoading, setIsDeleteCollectionLoading] =
     useState(false);
   const [sameId, setIsSameId] = useState(false);
-  const [response, setNewResponse] = useState({});
+  const [response, setNewResponse] = useState();
   const [paramsKey, setParamsKey] = useState("");
   const [paramsValue, setParamsValue] = useState("");
   const [contentType, setContentType] = useState("");
@@ -258,7 +259,7 @@ const Home = () => {
       if (jsonResponse.message.body) {
         jsonBody = JSON.parse(jsonResponse.message.body);
       } else {
-        jsonBody = '';
+        jsonBody = "";
       }
       const formattedObj = {
         id: jsonResponse.message.id,
@@ -1039,19 +1040,19 @@ const Home = () => {
           <h1 className="text-center text-2xl font-semibold text-white underline mb-3">
             Response
           </h1>
+          {response && (
+            <div className="flex justify-start items-center w-full">
+              <h1 className="text-2xl font-semibold mx-2">Status: </h1>
+              <h1
+                className={`${getStatusColor(
+                  status
+                )} font-bold text-2xl tracking-widest`}
+              >
+                {status}
+              </h1>
+            </div>
+          )}
           <div className="w-90 h-full p-3 overflow-auto scrollbar">
-            {response && (
-              <div className="flex justify-start items-center">
-                <h1 className="text-2xl font-semibold">Status: {"  "}</h1>
-                <h1
-                  className={`${getStatusColor(
-                    status
-                  )} font-bold text-2xl tracking-widest`}
-                >
-                  {status}
-                </h1>
-              </div>
-            )}
             {isResponseLoading ? (
               <div className="flex justify-center items-center h-80 mb-3 mt-3">
                 <TailSpin
@@ -1064,15 +1065,17 @@ const Home = () => {
               </div>
             ) : (
               response && (
-                <ReactJson
-                  src={response || {}}
-                  collapsed={false}
-                  enableClipboard={true}
-                  displayDataTypes={false}
-                  theme="shapeshifter:oceans"
-                  name={false}
-                  width={250}
-                />
+                <div className="bg-gray-200">
+                  <JsonView
+                    value={response || {}}
+                    collapsed={false}
+                    enableClipboard={true}
+                    displayDataTypes={false}
+                    theme="monakai"
+                    name={false}
+                    width={250}
+                  />
+                </div>
               )
             )}
             {!response && (
