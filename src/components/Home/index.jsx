@@ -4,7 +4,7 @@ import { supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
 import Collections from "../Collections";
 import History from "../History";
-import ReactJson from "@uiw/react-json-view";
+import ReactJson from "react-json-view";
 import { BiSolidFolderOpen } from "react-icons/bi";
 import { MdHistory } from "react-icons/md";
 import { TailSpin } from "react-loader-spinner";
@@ -30,7 +30,7 @@ const Home = () => {
   const [isDeleteCollectionLoading, setIsDeleteCollectionLoading] =
     useState(false);
   const [sameId, setIsSameId] = useState(false);
-  const [response, setNewResponse] = useState();
+  const [response, setNewResponse] = useState({});
   const [paramsKey, setParamsKey] = useState("");
   const [paramsValue, setParamsValue] = useState("");
   const [contentType, setContentType] = useState("");
@@ -253,7 +253,13 @@ const Home = () => {
       setIsResponseLoading(false);
       toast.warning("No Response. Make an API call", { autoClose: 1600 });
     } else {
-      const jsonBody = JSON.parse(jsonResponse.message?.body);
+      setIsResponseLoading(false);
+      let jsonBody = null;
+      if (jsonResponse.message.body) {
+        jsonBody = JSON.parse(jsonResponse.message.body);
+      } else {
+        jsonBody = '';
+      }
       const formattedObj = {
         id: jsonResponse.message.id,
         userId: jsonResponse.message.user_id,
@@ -267,8 +273,8 @@ const Home = () => {
         response: jsonResponse.message.response,
         createdAt: jsonResponse.message.created_at,
       };
+      console.log(formattedObj);
       toast.success(`${requestName} Request Response...!`, { autoClose: 1600 });
-      setIsResponseLoading(false);
       setApi(formattedObj.url);
       setApiMethod(formattedObj.method);
       setBody(formattedObj.body);
@@ -406,7 +412,9 @@ const Home = () => {
         setActiveHistory(formattedList[0].requestId);
       setHistoryCollection(formattedList);
     } catch (error) {
-      toast.error("Something went wrong on get History...!", { autoClose: 1800 });
+      toast.error("Something went wrong on get History...!", {
+        autoClose: 1800,
+      });
     }
   };
   const setActiveHistoryId = (id) => {
@@ -1057,7 +1065,7 @@ const Home = () => {
             ) : (
               response && (
                 <ReactJson
-                  src={response}
+                  src={response || {}}
                   collapsed={false}
                   enableClipboard={true}
                   displayDataTypes={false}

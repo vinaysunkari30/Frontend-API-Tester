@@ -4,25 +4,6 @@ import { supabase } from "../supabase";
 import { TailSpin } from "react-loader-spinner";
 import { BsThreeDots } from "react-icons/bs";
 
-const methodColors = [
-  {
-    id: "GET",
-    color: "green",
-  },
-  {
-    id: "POST",
-    color: "yellow",
-  },
-  {
-    id: "PUT",
-    color: "blue",
-  },
-  {
-    id: "DELETE",
-    color: "red",
-  },
-];
-
 const History = (props) => {
   const {
     historyObj,
