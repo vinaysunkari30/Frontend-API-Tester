@@ -70,7 +70,7 @@ const Home = () => {
       };
       const response = await fetch(
         "https://backend-api-tester-t8sp.onrender.com/collections",
-        options
+        options,
       );
       const json = await response.json();
       const formattedList = json.collections.map((each) => {
@@ -85,9 +85,7 @@ const Home = () => {
       setCollectionsList(formattedList);
       setIsCollectionLoading(false);
     } catch (error) {
-      toast.error("No Collections. Something went wrong...!", {
-        autoClose: 1800,
-      });
+      console.log(error);
     }
   };
   const showCollections = () => {
@@ -145,7 +143,7 @@ const Home = () => {
       };
       const response = await fetch(
         "https://backend-api-tester-t8sp.onrender.com/collections",
-        options
+        options,
       );
       const json = await response.json();
       const newCollection = json.data[0];
@@ -187,7 +185,7 @@ const Home = () => {
       };
       const response = await fetch(
         `https://backend-api-tester-t8sp.onrender.com/collections/${id}`,
-        options
+        options,
       );
       const json = await response.json();
       const formattedList = json.exists.map((each) => {
@@ -247,7 +245,7 @@ const Home = () => {
     };
     const serverResponse = await fetch(
       `https://backend-api-tester-t8sp.onrender.com/request/${id}`,
-      options
+      options,
     );
     const jsonResponse = await serverResponse.json();
     if (!serverResponse.ok) {
@@ -274,7 +272,6 @@ const Home = () => {
         response: jsonResponse.message.response,
         createdAt: jsonResponse.message.created_at,
       };
-      console.log(formattedObj);
       toast.success(`${requestName} Request Response...!`, { autoClose: 1600 });
       setApi(formattedObj.url);
       setApiMethod(formattedObj.method);
@@ -349,7 +346,10 @@ const Home = () => {
         },
         body: JSON.stringify(apiData),
       };
-      const response = await fetch("https://backend-api-tester-t8sp.onrender.com/proxy", options);
+      const response = await fetch(
+        "https://backend-api-tester-t8sp.onrender.com/proxy",
+        options,
+      );
       const json = await response.json();
       const data = json.saveResponse.data[0];
       const formattedObj = {
@@ -387,7 +387,10 @@ const Home = () => {
           Authorization: `Bearer ${token}`,
         },
       };
-      const response = await fetch("https://backend-api-tester-t8sp.onrender.com/history", options);
+      const response = await fetch(
+        "https://backend-api-tester-t8sp.onrender.com/history",
+        options,
+      );
       const json = await response.json();
       const formattedList = json.data.map((each) => {
         return {
@@ -413,9 +416,7 @@ const Home = () => {
         setActiveHistory(formattedList[0].requestId);
       setHistoryCollection(formattedList);
     } catch (error) {
-      toast.error("Something went wrong on get History...!", {
-        autoClose: 1800,
-      });
+      console.log(error);
     }
   };
   const setActiveHistoryId = (id) => {
@@ -447,7 +448,7 @@ const Home = () => {
       };
       const serverResponse = await fetch(
         `https://backend-api-tester-t8sp.onrender.com/history/${id}`,
-        options
+        options,
       );
 
       const jsonRes = await serverResponse.json();
@@ -498,7 +499,7 @@ const Home = () => {
       };
       const response = await fetch(
         `https://backend-api-tester-t8sp.onrender.com/history/requests/${id}`,
-        options
+        options,
       );
       const json = await response.json();
       const formattedList = json.existUsers.map((each) => {
@@ -1045,7 +1046,7 @@ const Home = () => {
               <h1 className="text-2xl font-semibold mx-2">Status: </h1>
               <h1
                 className={`${getStatusColor(
-                  status
+                  status,
                 )} font-bold text-2xl tracking-widest`}
               >
                 {status}
