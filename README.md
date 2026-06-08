@@ -1,18 +1,64 @@
-# React + Vite
+# API Tester
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application built to test REST APIs by sending HTTP requests and viewing responses in a user-friendly interface. This project helps developers interact with APIs without using external tools.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Send GET requests
+- Send POST requests
+- Send PUT requests
+- Send DELETE requests
+- View API responses
+- Display response status codes
+- JSON response formatting
+- User-friendly interface
+- Responsive design
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+### Frontend
+- React.js
+- JavaScript
+- HTML5
+- CSS3
+- Tailwind.css
+- Axios
 
-Note: This will impact Vite dev & build performances.
+## Installation
 
-## Expanding the ESLint configuration
+### Clone Repository
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/vinaysunkari30/Frontend-API-Tester.git
+```
+
+### Navigate to Project Directory
+
+```bash
+cd Frontend-API-Tester
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+The application will run at:
+
+```text
+http://localhost:5173
+```
+## How to Use
+
+1. Enter the API URL.
+2. Select the HTTP method (GET, POST, PUT, DELETE).
+3. Add request body if required.
+4. Click the Send button.
+5. View the response data and status code.
